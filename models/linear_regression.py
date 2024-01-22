@@ -40,8 +40,8 @@ class CustomLinearRegression:
             #     yi = y[random_index:random_index+1]
             #     gradient = self.calculate_gradient(xi, yi, xi.dot(self.theta))
             #     self.theta -= self.learning_rate * gradient
-            # else:
-            #     raise ValueError("Nieznana metoda optymalizacji.")
+            else:
+                raise ValueError("Nieznana metoda optymalizacji.")
 
     def calculate_gradient(self, X, y, y_pred):
         # Obliczenie gradientu funkcji kosztu w zależności od funkcji kosztu
@@ -50,6 +50,9 @@ class CustomLinearRegression:
             gradient = 2/X.shape[0] * X.T.dot(y_pred - y)
             print(f'gradient: {gradient}')
             return gradient
+        else:
+            raise ValueError("Nieznana funckja kosztu.")
+        
 
     def predict(self, X):
         # Dodanie kolumny jednostkowej do X (bias)

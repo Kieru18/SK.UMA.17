@@ -1,39 +1,33 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-import json
-import pickle
-from data.load_datasets import get_diamonds, get_wines
-from flask import Flask, request, jsonify
+from load_datasets import get_diamonds, get_wines
+from models.linear_regression import CustomLinearRegression
+from sklearn.model_selection import train_test_split
 
+from CONST import SEED, COST_FUNCTIONS, LEARNING_FUNCTIONS
 
-app = Flask(__name__)
-@app.route("/")
-def index():
-    paths = [str(rule) for rule in app.url_map.iter_rules()]
-    paths.remove('/static/<path:filename>')
-    return "<br>".join(paths)
-
-@app.route('/predict', methods=['POST'])
-def predict():
-    pass
-
-@app.route('/train', methods=['POST'])
-def train():
-    pass
-
-@app.route('/load', methods=['POST'])
-def load():
-    pass
 
 def main():
-    app.run(host='0.0.0.0', port=5000, debug=True)
-    
-    # diamonds_df = get_diamonds()
-    # wines_df = get_wines()
+    diamonds_df = get_diamonds()
+    wines_df = get_wines()
 
-    # diamonds_df.info()
-    # wines_df.info()
+    diamonds_train, diamonds_test = train_test_split(diamonds_df, test_size=0.2, random_state=SEED)
+    wines_train, wines_test = train_test_split(wines_df, test_size=0.2, random_state=SEED)
+
+    models = [CustomLinearRegression]  # Reference to the class without calling its constructor
+
+    for cost_function in COST_FUNCTIONS:
+        for learning_function in LEARNING_FUNCTIONS:
+            for model in models:
+                print(f'------------------------')
+                model = model(cost_function=cost_function, learning_function=learning_function)  # Call the constructor when needed
+            
+                print(f'theta: {model.theta}')
+                print(f'cost_function: {model.cost_function}')
+                print(f'learning_function: {model.learning_function}')
+                print(f'------------------------')
+
 
 
 if __name__ == "__main__":

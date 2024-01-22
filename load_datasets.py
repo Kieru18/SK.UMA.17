@@ -4,13 +4,13 @@ from sklearn.preprocessing import LabelEncoder
 
 
 def get_wines():
-    wines_df = pd.read_csv('wine_quality/winequality-white.csv', delimiter=';')
+    wines_df = pd.read_csv('data/wine_quality/winequality-white.csv', delimiter=';')
 
     return wines_df
 
 
 def get_diamonds():
-    diamonds_df = pd.read_csv('diamonds/diamonds.csv', index_col='id')
+    diamonds_df = pd.read_csv('data/diamonds/diamonds.csv', index_col='id')
 
     # Apply label encoding to non-numercial attributes
     label_encoder = LabelEncoder()

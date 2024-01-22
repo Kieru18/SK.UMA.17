@@ -1,3 +1,4 @@
 data/*/
 !data/diamonds/
 !data/wine_quality/
+*.pyc
