@@ -1,8 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import constants
+import CONST
 
-np.random.seed = constants.SEED
+np.random.seed = CONST.SEED
 
 
 class CustomLinearRegression:
