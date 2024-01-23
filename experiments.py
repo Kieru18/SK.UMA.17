@@ -8,7 +8,7 @@ from CONST import (SEED, COST_FUNCTIONS, LEARNING_FUNCTIONS, METRICS,
                    FEATURES_DIAMONDS, TARGET_DIAMONDS, FEATURES_WINES, TARGET_WINES)
 from Dataset import Dataset
 from models.RegressionModel import RegressionModel
-from load_datasets import get_diamonds, get_wines
+from load_datasets import get_diamonds, get_wines, get_housing
 from utils import train, calculate_metrics, scatter_plot, show_metrics, save_metrics
 from models.linear_regression import CustomLinearRegression
 # from models.random_forest_regression import CustomRandomForest
@@ -31,6 +31,7 @@ wines = Dataset(wines_df, FEATURES_WINES, TARGET_WINES)
 datasets: Dict[str, Dataset] = dict()
 datasets['diamonds'] = diamonds
 datasets['wines'] = wines
+datasets['housing'] = get_housing()
 
 for dataset_name, dataset in datasets.items():
     dataset.split()
