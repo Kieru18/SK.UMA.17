@@ -9,13 +9,21 @@ def get_wines() -> pd.DataFrame:
     return wines_df
 
 
-def get_diamonds():
+def get_diamonds() -> pd.DataFrame:
     diamonds_df = pd.read_csv('data/diamonds/diamonds.csv', index_col='id')
 
-    # Apply label encoding to non-numercial attributes
     label_encoder = LabelEncoder()
     diamonds_df['cut'] = label_encoder.fit_transform(diamonds_df['cut'])
     diamonds_df['color'] = label_encoder.fit_transform(diamonds_df['color'])
     diamonds_df['clarity'] = label_encoder.fit_transform(diamonds_df['clarity'])
 
     return diamonds_df
+
+
+def get_housing() -> pd.DataFrame:
+    housing_df = pd.read_csv('data/housing/housing.csv')
+
+    label_encoder = LabelEncoder()
+    housing_df['ocean_proximity'] = label_encoder.fit_transform(housing_df['ocean_proximity'])
+
+    return housing_df
