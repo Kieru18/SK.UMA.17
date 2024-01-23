@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import gc
+
 
 class CustomLinearRegression:
     def __init__(self, learning_rate=0.0001, num_iterations=10000, cost_function='mse', learning_function='gradient_descent'):
@@ -8,17 +8,16 @@ class CustomLinearRegression:
         self.num_iterations = num_iterations
         self.cost_function = cost_function
         self.learning_function = learning_function
-        self.theta = None  # Parametry modelu
+        self.theta = None 
 
     def fit(self, X, y):
-        # Dodanie kolumny jednostkowej do zbioru danych trenujących z wartością stałą (bias)
+
         X = np.asarray(X)
         y = np.asarray(y).reshape(-1, 1)
 
         X_b = np.c_[np.ones((X.shape[0], 1)), X]
         y = y
 
-        # Inicjalizacja parametrów theta
         self.theta = np.ones(X_b.shape[1]).reshape(-1, 1)
 
         if self.learning_function == 'ordinary_least_squares':
@@ -66,14 +65,15 @@ class CustomLinearRegression:
         gradient = X.T.dot(2*(y_pred - y)) / X.shape[0]
         return gradient
 
-    def base_gradient_mae(self):
-        absolute_errors = np.sign(self.y_pred - self.y)
-        gradient = self.X_b.T.dot(absolute_errors) / self.X_b.shape[0]
+    def base_gradient_mae(self, X, y, y_pred):
+        errors = np.sign(y_pred - y)
+        gradient = (np.sum(X * errors.reshape(X.shape[0], 1) / X.shape[0], axis=0)).reshape(-1, 1)
         return gradient
 
-    def base_gradient_huber(self, X_b, y_pred, y):
+    def base_gradient_huber(self, X, y_pred, y):
         error = y_pred - y
-        gradient = X_b.T.dot(self.huber_loss_derivative(error)) / X_b.shape[0]
+        gradient = -X.T.dot(self.huber_loss_derivative(error)) / X.shape[0]
+        print(gradient.shape)
         return gradient
 
     def huber_loss_derivative(self, error):
