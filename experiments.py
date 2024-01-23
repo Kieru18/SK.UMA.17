@@ -39,18 +39,7 @@ datasets['housing'] = housing
 for dataset_name, dataset in datasets.items():
     dataset.split()
 
-# own implementations of regression models
-    
-# for cost_function in COST_FUNCTIONS:
-#     for learning_function in LEARNING_FUNCTIONS:
-#         # models[f"LinearRegression_{cost_function}_{learning_function}"] = \
-#         #     CustomLinearRegression(cost_function=cost_function, learning_function=learning_function)
 
-#         # models[f"RandomForestRegressor_{cost_function}_{learning_function}"] = RandomForestRegressor()
-
-#         pass
-
-# ready to use models from sklearn
 models["LinearRegression_sklearn_diamonds"] = LinearRegression()
 models["LinearRegression_sklearn_wines"] = LinearRegression()
 models["RandomForestRegressor_sklearn_diamonds"] = RandomForestRegressor(random_state=SEED)
