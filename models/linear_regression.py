@@ -40,7 +40,7 @@ class CustomLinearRegression:
                 self.theta -= self.learning_rate * gradient
                 print(self.theta)
 
-            if self.learning_function == 'stohastic_gradient_descent':
+            if self.learning_function == 'stochastic_gradient_descent':
                 elements = list(range(X.shape[0]))
                 indices = np.random.choice(elements, round(len(elements)/5), replace=False)
                 np.random.shuffle(indices)

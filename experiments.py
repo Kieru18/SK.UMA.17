@@ -40,6 +40,7 @@ for dataset_name, dataset in datasets.items():
     dataset.split()
 
 
+
 models["LinearRegression_sklearn_diamonds"] = LinearRegression()
 models["LinearRegression_sklearn_wines"] = LinearRegression()
 models["RandomForestRegressor_sklearn_diamonds"] = RandomForestRegressor(random_state=SEED)
@@ -52,12 +53,12 @@ models["LinearRegression_mae_base_grad_diamonds"] = CustomLinearRegression(learn
 models["LinearRegression_huber_base_grad_wines"] = CustomLinearRegression(learning_rate=0.5, num_iterations=10000, cost_function='huber_loss', learning_function='gradient_descent')
 models["LinearRegression_huber_base_grad_diamonds"] = CustomLinearRegression(learning_rate=0.1, num_iterations=12000, cost_function='huber_loss', learning_function='gradient_descent')
 
-models["LinearRegression_mse_stohastic_grad_wines"] = CustomLinearRegression(learning_rate=0.00001, num_iterations=800, cost_function='mse', learning_function='stohastic_gradient_descent')
-models["LinearRegression_mse_stohastic_grad_diamonds"] = CustomLinearRegression(learning_rate=0.00002, num_iterations=1400, cost_function='mse', learning_function='stohastic_gradient_descent')
-models["LinearRegression_mae_stohastic_grad_wines"] = CustomLinearRegression(learning_rate=0.1, num_iterations=500, cost_function='mae', learning_function='stohastic_gradient_descent')
-models["LinearRegression_mae_stohastic_grad_diamonds"] = CustomLinearRegression(learning_rate=0.1, num_iterations=500, cost_function='mae', learning_function='stohastic_gradient_descent')
-models["LinearRegression_huber_stohastic_grad_wines"] = CustomLinearRegression(learning_rate=0.1, num_iterations=500, cost_function='huber_loss', learning_function='stohastic_gradient_descent')
-models["LinearRegression_huber_stohastic_grad_diamonds"] = CustomLinearRegression(learning_rate=0.1, num_iterations=500, cost_function='huber_loss', learning_function='stohastic_gradient_descent')
+models["LinearRegression_mse_stochastic_grad_wines"] = CustomLinearRegression(learning_rate=0.00001, num_iterations=800, cost_function='mse', learning_function='stochastic_gradient_descent')
+models["LinearRegression_mse_stochastic_grad_diamonds"] = CustomLinearRegression(learning_rate=0.00002, num_iterations=1400, cost_function='mse', learning_function='stochastic_gradient_descent')
+models["LinearRegression_mae_stochastic_grad_wines"] = CustomLinearRegression(learning_rate=0.1, num_iterations=500, cost_function='mae', learning_function='stochastic_gradient_descent')
+models["LinearRegression_mae_stochastic_grad_diamonds"] = CustomLinearRegression(learning_rate=0.1, num_iterations=500, cost_function='mae', learning_function='stochastic_gradient_descent')
+models["LinearRegression_huber_stochastic_grad_wines"] = CustomLinearRegression(learning_rate=0.1, num_iterations=500, cost_function='huber_loss', learning_function='stochastic_gradient_descent')
+models["LinearRegression_huber_stochastic_grad_diamonds"] = CustomLinearRegression(learning_rate=0.1, num_iterations=500, cost_function='huber_loss', learning_function='stochastic_gradient_descent')
 
 # models["LinearRegression_ordinary_least_squares_diamonds"] = CustomLinearRegression(learning_function='ordinary_least_squares')
 # models["LinearRegression_ordinary_least_squares_wines"] = CustomLinearRegression(learning_function='ordinary_least_squares')
