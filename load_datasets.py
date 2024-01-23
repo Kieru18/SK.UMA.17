@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 
 
-def get_wines():
+def get_wines() -> pd.DataFrame:
     wines_df = pd.read_csv('data/wine_quality/winequality-white.csv', delimiter=';')
 
     return wines_df
